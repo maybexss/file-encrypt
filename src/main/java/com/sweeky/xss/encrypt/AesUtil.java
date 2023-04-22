@@ -1,8 +1,6 @@
 package com.sweeky.xss.encrypt;
 
 
-import org.apache.commons.codec.binary.Base64;
-
 import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;
 import javax.crypto.CipherOutputStream;
@@ -65,8 +63,7 @@ public class AesUtil {
         try {
             String[] fileNameArr = srcFile.getName().split("\\.");
 
-            String fileName = encFileDir + File.separator + Base64.encodeBase64String(fileNameArr[0].getBytes()) + "."
-                    + fileNameArr[1] + "." + ENC_TYPE;
+            String fileName = encFileDir + File.separator + System.currentTimeMillis() + "." + fileNameArr[fileNameArr.length - 1] + "." + ENC_TYPE;
 
             File encryptFile = new File(fileName);
             if (!encryptFile.createNewFile()) {
@@ -100,8 +97,7 @@ public class AesUtil {
 
         try {
             String[] fileNameArr = encryptFile.getName().split("\\.");
-            String fileName = decFileDir + File.separator + new String(Base64.decodeBase64(fileNameArr[0])) + "." +
-                    fileNameArr[1];
+            String fileName = decFileDir + File.separator + fileNameArr[fileNameArr.length - 3] + "." + fileNameArr[fileNameArr.length - 2];
 
             decryptFile = new File(fileName);
             if (!decryptFile.createNewFile()) {
