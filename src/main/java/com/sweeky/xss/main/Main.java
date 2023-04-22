@@ -17,9 +17,17 @@ public class Main {
         if ("ENC".equalsIgnoreCase(optionType)) {
             System.out.print("Input the source files' folder path:");
             String filePath = scanner.nextLine();
+            while (filePath == null || filePath.length() <= 0) {
+                System.out.print("Invalid filePath, input the source files' folder path:");
+                filePath = scanner.nextLine();
+            }
 
             System.out.print("Input the files' store folder path after them encrypted:");
             String encryptFilePath = scanner.nextLine();
+            while (encryptFilePath == null || encryptFilePath.length() <= 0) {
+                System.out.print("Invalid encryptFilePath, input the files' store folder path after them encrypted:");
+                encryptFilePath = scanner.nextLine();
+            }
 
             System.out.print("Create your encrypt password(default is |'Hello World!]):");
             String sKey = scanner.nextLine();
@@ -28,9 +36,17 @@ public class Main {
         } else if ("DEC".equalsIgnoreCase(optionType)) {
             System.out.print("Input your encrypted files' folder path:");
             String encryptFilePath = scanner.nextLine();
+            while (encryptFilePath == null || encryptFilePath.length() <= 0) {
+                System.out.print("Invalid encryptFilePath, input your encrypted files' folder path:");
+                encryptFilePath = scanner.nextLine();
+            }
 
             System.out.print("Input the files' store folder path after them decrypted:");
             String decryptFilePath = scanner.nextLine();
+            while (decryptFilePath == null || decryptFilePath.length() <= 0) {
+                System.out.print("Invalid decryptFilePath, input the files' store folder path after them decrypted:");
+                decryptFilePath = scanner.nextLine();
+            }
 
             System.out.print("Input your created password(default is |'Hello World!]):");
             String sKey = scanner.nextLine();
